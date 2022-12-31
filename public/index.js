@@ -55,18 +55,18 @@ confettiWindow.onclick = (event) => {
       const confettiElement = document.createElement('div');
       confettiElement.className = 'confetti';
       // set the position of the confetti element with random offset in all directions
-      const offset = Math.random() * 100;
+      const offset = Math.random() * 50;
       confettiElement.style.top = `${y + Math.random() * offset - (offset / 2)}px`;
       confettiElement.style.left = `${x + Math.random() * offset - (offset / 2)}px`;
       confettiElement.style.transform = `translate(-50%, -50%)`;
       confettiWindow.appendChild(confettiElement);
       setTimeout(() => {
-          throwElement(
-            confettiElement,
-            Math.random() * 100 + 100,
-            Math.random() * 2 * Math.PI,
-            Math.random() * 0.5 + 0.5
-          );
+        throwElement(
+          confettiElement,
+          Math.random() * 100 + 100,
+          Math.random() * 2 * Math.PI,
+          Math.random() * 0.5 + 0.5
+        );
       }, 10);
       i--;
       if (i <= 0) {
