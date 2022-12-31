@@ -11,10 +11,31 @@
                 height: 100vh;
                 margin: 0;
                 padding: 0;
-                background-color: #000;
+                background: radial-gradient(circle, #f00, #000);
+                color: #fff;
                 display: flex;
                 justify-content: center;
                 align-items: center;
+            }
+            #happyNewYear {
+                height: 100%;
+                width: 100%;
+                font-size: 50px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: absolute;
+            }
+            #year {
+                height: 100%;
+                width: 100%;
+                font-size: 150px;
+                letter-spacing: 50px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: absolute;
+                opacity: 0.5;
             }
             #confettiWindow {
                 height: 100%;
@@ -25,14 +46,16 @@
             .confetti {
                 width: 10px;
                 height: 10px;
-                background-color: red;
-                border-radius: 50%;
+                background-color: #ff0;
+                /* border-radius: 50%; */
                 position: absolute;
             }
         </style>
         <script src="./index.js" defer></script>
     </head>
     <body>
+        <h1 id="happyNewYear">Happy new year</h1>
+        <h2 id="year">2023</h2>
         <div id="confettiWindow">
 
         </div>

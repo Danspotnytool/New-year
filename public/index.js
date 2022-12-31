@@ -31,8 +31,11 @@ function throwElement(element, speed, direction, mass) {
     initialVerticalSpeed += g * elapsedTime;
 
     // Update the position of the element
-    element.style.top = newTop + "px";
-    element.style.left = newLeft + "px";
+    element.style.top = `${newTop}px`
+    element.style.left = `${newLeft}px`
+
+    // Update the rotation of the element
+    element.style.transform = `translate(-50%, -50%) rotate(${newLeft * 0.5}deg)`;
 
     // If the element has moved off the screen, stop the interval
     if (newTop < 0 || newTop > element.parentNode.offsetHeight || newLeft < 0 || newLeft > element.parentNode.offsetWidth) {
@@ -47,30 +50,31 @@ function throwElement(element, speed, direction, mass) {
 
 
 confettiWindow.onclick = (event) => {
-    // Get the position of the click relative to the confetti window
-    const x = event.clientX - confettiWindow.offsetLeft;
-    const y = event.clientY - confettiWindow.offsetTop;
-    let i = 10;
-    const insertInterval = setInterval(() => {
-      const confettiElement = document.createElement('div');
-      confettiElement.className = 'confetti';
-      // set the position of the confetti element with random offset in all directions
-      const offset = Math.random() * 50;
-      confettiElement.style.top = `${y + Math.random() * offset - (offset / 2)}px`;
-      confettiElement.style.left = `${x + Math.random() * offset - (offset / 2)}px`;
-      confettiElement.style.transform = `translate(-50%, -50%)`;
-      confettiWindow.appendChild(confettiElement);
-      setTimeout(() => {
-        throwElement(
-          confettiElement,
-          Math.random() * 100 + 100,
-          Math.random() * 2 * Math.PI,
-          Math.random() * 0.5 + 0.5
-        );
-      }, 10);
-      i--;
-      if (i <= 0) {
-          clearInterval(insertInterval);
-      };
-    }, 0);
+  // Get the position of the click relative to the confetti window
+  const x = event.clientX - confettiWindow.offsetLeft;
+  const y = event.clientY - confettiWindow.offsetTop;
+  let i = 10;
+  const insertInterval = setInterval(() => {
+    const confettiElement = document.createElement('div');
+    confettiElement.className = 'confetti';
+    // set the position of the confetti element with random offset in all directions
+    const offset = Math.random() * 50;
+    confettiElement.style.top = `${y + Math.random() * offset - (offset / 2)}px`;
+    confettiElement.style.left = `${x + Math.random() * offset - (offset / 2)}px`;
+    confettiElement.style.transform = `translate(-50%, -50%)`;
+    confettiWindow.appendChild(confettiElement);
+    setTimeout(() => {
+      throwElement(
+        confettiElement,
+        Math.random() * 100 + 100,
+        Math.random() * 2 * Math.PI,
+        Math.random() * 0.5 + 0.5
+      );
+    }, 10);
+    i--;
+    if (i <= 0) {
+        clearInterval(insertInterval);
+    };
+  }, 0);
+  return false;
 };
